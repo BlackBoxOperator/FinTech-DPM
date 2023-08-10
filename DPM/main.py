@@ -38,9 +38,9 @@ parser.add_argument('--seed', type=int, default=7, metavar='N',
 parser.add_argument('--batch_size', type=int, default=256, metavar='N',
                     help='batch size (default: 256)')
 
-parser.add_argument('--n_episode', type=int, default=6, metavar='N',
+parser.add_argument('--n_episode', type=int, default=30, metavar='N',
                     help='number of episode for each batch (default: 5)')
-parser.add_argument('--num_steps', type=int, default=10000, metavar='N',
+parser.add_argument('--num_steps', type=int, default=18000, metavar='N',
                     help='maximum number of steps (default: 1000000)')
 parser.add_argument('--rolling_steps', type=int, default=20, metavar='N',
                     help='maximum number of steps (default: 1000000)')
@@ -57,7 +57,7 @@ parser.add_argument('--test_portion', type=float, default=0.08,
 parser.add_argument('--smoothing_days', type=int, default=5,
                     help='smoothing days (default: 5)')
 
-parser.add_argument('--stocks', type=int, default=1,
+parser.add_argument('--stocks', type=int, default=0,
                     help='smoothing days (default: 1)')
 parser.add_argument('--buffer_biased', type=float, default=5e-5,
                     help='buffer_biased for sampling (default: 5e-5)') #stock 2e-4 #btc 5e-5

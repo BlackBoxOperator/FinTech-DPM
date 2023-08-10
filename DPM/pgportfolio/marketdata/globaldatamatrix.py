@@ -20,9 +20,9 @@ def get_global_panel_stock(start, end, period=300, features=('close',)):
     :param features: tuple or list of the feature names
     :return a panel, [feature, coin, time]
     """
-    stock = np.load('pgportfolio/data/stock.npy', allow_pickle=True)
-    coins = ['GOOG', 'NVDA', 'AMZN', 'AMD', 'QCOM', 'INTC', 'MSFT', 'AAPL', 'BIDU']
-
+    stock = np.load('pgportfolio/data/stock_t.npy', allow_pickle=True)
+    # coins = ['GOOG', 'NVDA', 'AMZN', 'AMD', 'QCOM', 'INTC', 'MSFT', 'AAPL', 'BIDU']
+    coins = ['3231', '2610', '2382', '2356', '2618', '2363', '3481', '2891', '2888']
     logging.info("feature type list is %s" % str(features))
 
     stock_cols = ['date', 'high', 'low', 'open', 'close', 'volume', 'quoteVolume']
@@ -38,7 +38,8 @@ def get_global_panel_stock(start, end, period=300, features=('close',)):
         df['date'] = pd.to_datetime(df['date'])
         df = df.set_index('date')
         for feature in features:
-            panel.loc[feature, coin, :] = df.loc[:,feature].tolist()
+            panel.loc[feature, coin, :] = [float(i) for i in df.loc[:,feature].tolist()]
+            
             panel = panel_fillna(panel, "both")
 
     return panel
